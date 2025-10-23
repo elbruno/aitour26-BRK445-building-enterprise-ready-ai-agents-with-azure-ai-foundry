@@ -6,6 +6,7 @@ This file provides step-by-step instructions to build and run the `aspiredemo` (
 
 This solution supports two agent frameworks that you can switch between using the **Settings page** in the Store frontend:
 
+1. **Large Language Models (LLM)** - Default usage using directly large language models
 1. **Semantic Kernel (SK)** - Default framework using Microsoft.SemanticKernel
 2. **Microsoft Agent Framework (AgentFx)** - Uses Microsoft.Agents.AI
 
@@ -15,17 +16,15 @@ After running the demo:
 
 1. Open the **Store** application in your browser
 2. Navigate to **Settings** from the navigation menu (left sidebar)
-3. Use the toggle switch to select your preferred framework:
-   - **Toggle OFF** = Semantic Kernel (SK) - Default
-   - **Toggle ON** = Microsoft Agent Framework (AgentFx)
+3. Select your preferred framework
 4. Your selection is automatically saved in your browser's localStorage
 5. All agent demos will immediately use the selected framework (no restart needed)
 
-**Note:** Both frameworks connect to the same Azure AI Foundry agents. The selection only affects which orchestration framework is used.
+**Note:** All the frameworks connect to the same Azure AI Foundry agents. The selection only affects which orchestration framework is used.
 
 ## Quick start (terminal)
 
-Open PowerShell / Bash in the solution folder and run:
+Open PowerShell / Bash in the solution folder [./src] and run:
 
 ```powershell
 # Restore dependencies
@@ -61,7 +60,7 @@ The first time running the solution, the .NET Aspire dashboard will require you 
 
 - `aifoundry` is the connection string: `Endpoint=https://<your-resource>.cognitiveservices.azure.com/;ApiKey=<your-api-key>`
 - `applicationinsights` is the Application Insights connection string from your Application Insights resource
-- `aifoundruyproject` is the Project endpoint URL from your AI Foundry project settings page
+- `aifoundryproject` is the Project endpoint URL from your AI Foundry project settings page
 - `customerinformationagentid`, `inventoryagentid` and all the other agent ids are the agent IDs you created in the previous step; see `02.NeededCloudResources.md` for details.
 
 Check the `Save to user secrets` box to save them in your user secrets project for future runs.
