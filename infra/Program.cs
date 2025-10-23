@@ -18,11 +18,21 @@ if (string.IsNullOrWhiteSpace(projectEndpoint) || string.IsNullOrWhiteSpace(mode
     return;
 }
 
-var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { TenantId = tenantId });
-var client = new PersistentAgentsClient(projectEndpoint, credential);
+PersistentAgentsClient client = null;
 
-// Path to JSON configuration file containing agent metadata and optional knowledge files
-string agentConfigPath = Path.Combine(AppContext.BaseDirectory, "agents.json");
+// if tenantId is specified, use DefaultAzureCredential with tenant
+if (!string.IsNullOrWhiteSpace(tenantId))
+{
+    var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { TenantId = tenantId });
+    client = new PersistentAgentsClient(projectEndpoint, credential);
+}
+else
+{
+    client = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
+}
+
+    // Path to JSON configuration file containing agent metadata and optional knowledge files
+    string agentConfigPath = Path.Combine(AppContext.BaseDirectory, "agents.json");
 
 var runner = new AgentDeploymentRunner(client, modelDeploymentName, agentConfigPath);
 
