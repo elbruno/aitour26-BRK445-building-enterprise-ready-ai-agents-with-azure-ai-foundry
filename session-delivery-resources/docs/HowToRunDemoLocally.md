@@ -40,6 +40,17 @@ dotnet dev-certs https --trust
 dotnet run --project ./ZavaAppHost/ZavaAppHost.csproj
 ```
 
+Or if you installed the .NET Aspire CLI tool, you can run:
+
+```powershell
+# From the src folder
+aspire run 
+```
+
+## Running in CodeSpaces
+
+Check the video here for a walkthrough: **< coming soon >**
+
 ## Running in Visual Studio
 
 1. Open `aspiredemo\Zava-Aspire.slnx` in Visual Studio.
@@ -164,11 +175,13 @@ If you're running in a dev container and experience persistent permission issues
 1. **Rebuild the dev container**: Use the VS Code command palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and select "Dev Containers: Rebuild Container"
 
 2. **Check workspace permissions**: Ensure your workspace folder has appropriate permissions:
+
    ```bash
    sudo chown -R $(whoami) /workspaces/aitour26-BRK445-building-enterprise-ready-ai-agents-with-azure-ai-foundry
    ```
 
 3. **Clear all build artifacts**: Before rebuilding, ensure all artifacts are removed:
+
    ```bash
    cd /workspaces/aitour26-BRK445-building-enterprise-ready-ai-agents-with-azure-ai-foundry/src
    git clean -xdf
